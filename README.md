@@ -21,7 +21,7 @@ shared across Android and iOS, following the architecture in
 
 - **JDK 17** (project builds with Temurin/Corretto 17)
 - **Android**: Android SDK (`compileSdk 36`, `minSdk 24`); Android Studio or the command-line SDK. Set `sdk.dir` in `local.properties` (git-ignored) or `ANDROID_HOME`.
-- **iOS** (macOS only): **Xcode 16+** with an iOS Simulator, and **[XcodeGen](https://github.com/yonaskolb/XcodeGen)** if you need to regenerate the Xcode project (`brew install xcodegen`). The generated `iosApp/iosApp.xcodeproj` is committed, so XcodeGen is only needed when changing `iosApp/project.yml`.
+- **iOS** *(building & running the iOS app requires a Mac — Xcode is macOS-only)*: **Xcode 16+** with an iOS Simulator, and **[XcodeGen](https://github.com/yonaskolb/XcodeGen)** if you need to regenerate the Xcode project (`brew install xcodegen`). The generated `iosApp/iosApp.xcodeproj` is committed, so XcodeGen is only needed when changing `iosApp/project.yml`. On Windows/Linux you can still edit shared code and build/run Android — only the iOS target is Mac-restricted.
 
 The Gradle wrapper (`./gradlew`) pins the Gradle version — no local Gradle install needed.
 
