@@ -1,0 +1,10 @@
+#!/bin/sh
+# Enforces Conventional Commits on the message header (first line).
+# Installed via `core.hooksPath=.githooks` — see `./gradlew installGitHooks`.
+# The actual validation lives in check-commit-message.sh (shared with CI).
+
+commit_msg_file="$1"
+header=$(head -n1 "$commit_msg_file")
+
+hook_dir=$(dirname "$0")
+exec "$hook_dir/check-commit-message.sh" "$header"
