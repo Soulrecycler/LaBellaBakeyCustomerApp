@@ -8,3 +8,8 @@ local.properties
 *.hprof
 .kotlin/
 captures/
+
+# Xcode / iOS (the generated iosApp.xcodeproj IS committed; only per-user state is ignored)
+**/xcuserdata/
+*.xcuserstate
+DerivedData/
