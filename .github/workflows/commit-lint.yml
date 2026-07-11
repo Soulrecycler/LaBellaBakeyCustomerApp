@@ -13,6 +13,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Unit-test the commit-message checker
+        run: sh .githooks/check-commit-message.test.sh
+
       - name: Validate every commit message in the PR
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

@@ -13,7 +13,9 @@ case "$header" in
   "Merge "*|"Revert "*|"fixup!"*|"squash!"*) exit 0 ;;
 esac
 
-pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-zA-Z0-9_.-]+\))?: .+'
+# Description (after ": ") must contain at least one non-space char — a
+# whitespace-only description is not a real message.
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-zA-Z0-9_.-]+\))?: .*[^[:space:]]'
 
 if echo "$header" | grep -qE "$pattern"; then
   exit 0
