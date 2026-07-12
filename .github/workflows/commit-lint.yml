@@ -1,0 +1,39 @@
+name: commit-lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  conventional-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Unit-test the commit-message checker
+        run: sh .githooks/check-commit-message.test.sh
+
+      - name: Validate every commit message in the PR
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          chmod +x .githooks/check-commit-message.sh
+          rc=0
+          # Validate the header (first line) of each commit added by this PR.
+          # %s is the subject/header only; the shared script skips merge/revert/fixup/squash.
+          while IFS= read -r header; do
+            [ -z "$header" ] && continue
+            if ! .githooks/check-commit-message.sh "$header"; then
+              rc=1
+            fi
+          done <<EOF
+          $(git log "$BASE_SHA".."$HEAD_SHA" --format=%s)
+          EOF
+          if [ "$rc" -ne 0 ]; then
+            echo "::error::One or more commit messages do not follow Conventional Commits."
+          fi
+          exit $rc
