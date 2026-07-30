@@ -29,7 +29,8 @@ The "entities" here are asset sets. This file is the authoritative **size matrix
 
 All files above are pulled directly from `assets/app-icons/android/mipmap-{density}/` — no resizing needed.
 
-- `mipmap-anydpi-v26/ic_launcher.xml` + `ic_launcher_round.xml`: `<adaptive-icon>` with `<foreground>@mipmap/ic_launcher_foreground`, `<background>@mipmap/ic_launcher_background`. **No `<monochrome>` entry** (none exported).
+- `mipmap-anydpi-v26/ic_launcher.xml`: `<adaptive-icon>` with `<foreground>@mipmap/ic_launcher_foreground`, `<background>@mipmap/ic_launcher_background`. **No `<monochrome>` entry** (none exported).
+- **No `ic_launcher_round`** and no `android:roundIcon` in the manifest: the export has no round PNGs, so a round resource could only live under `anydpi-v26` — unresolvable at `minSdk = 24`. API 26+ launchers mask the adaptive icon themselves; API 24–25 falls back to the legacy `ic_launcher.png`.
 - **Play Store icon** (not bundled): exported `play-store-512.png` → `specs/002-app-icons-splash/assets/play-store-icon.png`.
 
 ## Entity: Android splash — `composeApp/src/androidMain/res`
@@ -54,12 +55,14 @@ Exported pixel files (all committed as-is, opaque, no alpha): `AppIcon-{20,40,58
 | `LaunchLogo.imageset` | exported `splash/labella-splash-logo.png` (+ `-1x` variant) | `Info.plist` `UILaunchScreen.UIImageName = LaunchLogo` |
 | `BrandBackground.colorset` | brand hex (from design) | launch background |
 
+> Known limitation: the export provides only 1x (401×275) and 2x (802×550) launch logos — no 3x. On 3x devices iOS scales the 2x asset up, so the launch logo is marginally soft there. Fixing it needs a 3x export from the design source; re-rasterizing locally is out of scope (research R1/R2).
+
 ## Wiring checklist (no orphans — FR-007)
 
-- [ ] Manifest `<application android:icon android:roundIcon>` → mipmaps
-- [ ] Manifest launcher-activity/application `android:theme` → `Theme.App.Starting`
-- [ ] `MainActivity` calls `installSplashScreen()` before `super.onCreate()`
-- [ ] `libs.versions.toml` + `androidMain` deps → `androidx-core-splashscreen`
-- [ ] `project.pbxproj` references `Assets.xcassets`; `ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon`
-- [ ] `Info.plist` `UILaunchScreen` → `UIImageName` + background color
-- [ ] Every PNG in the matrices above exists and is referenced; none orphaned
+- [X] Manifest `<application android:icon>` → mipmaps (no `android:roundIcon` — see above)
+- [X] Manifest launcher-activity/application `android:theme` → `Theme.App.Starting`
+- [X] `MainActivity` calls `installSplashScreen()` before `super.onCreate()`
+- [X] `libs.versions.toml` + `androidMain` deps → `androidx-core-splashscreen`
+- [X] `project.pbxproj` references `Assets.xcassets`; `ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon`
+- [X] `Info.plist` `UILaunchScreen` → `UIImageName` + background color
+- [X] Every PNG in the matrices above exists and is referenced; none orphaned

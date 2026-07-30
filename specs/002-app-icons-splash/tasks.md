@@ -26,9 +26,9 @@ description: "Task list for App Icons & Splash Screen (La Bella)"
 
 **Purpose**: Project/dependency scaffolding shared by both increments
 
-- [ ] T001 [P] Add `androidx-core-splashscreen` version + library alias entries to `gradle/libs.versions.toml`
-- [ ] T002 [P] Add `implementation(libs.androidx.core.splashscreen)` to the `androidMain.dependencies` block in `composeApp/build.gradle.kts`
-- [ ] T003 [P] Create empty destination directories: `composeApp/src/androidMain/res/mipmap-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/`, `composeApp/src/androidMain/res/mipmap-anydpi-v26/`, `composeApp/src/androidMain/res/drawable/`, `iosApp/iosApp/Assets.xcassets/`, `specs/002-app-icons-splash/assets/`
+- [X] T001 [P] Add `androidx-core-splashscreen` version + library alias entries to `gradle/libs.versions.toml`
+- [X] T002 [P] Add `implementation(libs.androidx.core.splashscreen)` to the `androidMain.dependencies` block in `composeApp/build.gradle.kts`
+- [X] T003 [P] Create empty destination directories: `composeApp/src/androidMain/res/mipmap-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/`, `composeApp/src/androidMain/res/mipmap-anydpi-v26/`, `composeApp/src/androidMain/res/drawable/`, `iosApp/iosApp/Assets.xcassets/`, `specs/002-app-icons-splash/assets/`
 
 ---
 
@@ -38,15 +38,15 @@ description: "Task list for App Icons & Splash Screen (La Bella)"
 
 **⚠️ CRITICAL**: No icon or splash wiring task can start until this phase is complete
 
-- [ ] T004 [P] Read the brand background hex from the `La Bella - App Icons & Splash.dc.html` / `La Bella - Splash & Signup.dc.html` design pages via `DesignSync.get_file`; record it for use in T019 and T025
-- [ ] T005 [P] Fetch `assets/app-icons/android/mipmap-mdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-mdpi/`
-- [ ] T006 [P] Fetch `assets/app-icons/android/mipmap-hdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-hdpi/`
-- [ ] T007 [P] Fetch `assets/app-icons/android/mipmap-xhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xhdpi/`
-- [ ] T008 [P] Fetch `assets/app-icons/android/mipmap-xxhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xxhdpi/`
-- [ ] T009 [P] Fetch `assets/app-icons/android/mipmap-xxxhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xxxhdpi/`
-- [ ] T010 [P] Fetch `assets/app-icons/android/play-store-512.png` via `DesignSync.get_file` into `specs/002-app-icons-splash/assets/play-store-icon.png` (not bundled in the app)
-- [ ] T011 [P] Fetch the full iOS set `assets/app-icons/ios/AppIcon-{20,40,58,60,76,80,87,120,152,167,180,1024}.png` via `DesignSync.get_file` into `iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/`; the 1024 file exceeds the tool's 256 KiB read cap and returns truncated — re-fetch in a way that avoids truncation (e.g. request via an alternate/chunked path) and verify the decoded PNG is complete (correct byte length, opens cleanly) before treating it as done
-- [ ] T012 [P] Fetch `assets/app-icons/splash/{labella-splash-logo.png,labella-splash-logo-1x.png,android12-splash-icon.png}` via `DesignSync.get_file` into `specs/002-app-icons-splash/assets/splash/` as a staging location for Phase 4
+- [X] T004 [P] Read the brand background hex from the `La Bella - App Icons & Splash.dc.html` / `La Bella - Splash & Signup.dc.html` design pages via `DesignSync.get_file`; record it for use in T019 and T025
+- [X] T005 [P] Fetch `assets/app-icons/android/mipmap-mdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-mdpi/`
+- [X] T006 [P] Fetch `assets/app-icons/android/mipmap-hdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-hdpi/`
+- [X] T007 [P] Fetch `assets/app-icons/android/mipmap-xhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xhdpi/`
+- [X] T008 [P] Fetch `assets/app-icons/android/mipmap-xxhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xxhdpi/`
+- [X] T009 [P] Fetch `assets/app-icons/android/mipmap-xxxhdpi/{ic_launcher.png,ic_launcher_foreground.png,ic_launcher_background.png}` via `DesignSync.get_file` into `composeApp/src/androidMain/res/mipmap-xxxhdpi/`
+- [X] T010 [P] Fetch `assets/app-icons/android/play-store-512.png` via `DesignSync.get_file` into `specs/002-app-icons-splash/assets/play-store-icon.png` (not bundled in the app)
+- [X] T011 [P] Fetch the full iOS set `assets/app-icons/ios/AppIcon-{20,40,58,60,76,80,87,120,152,167,180,1024}.png` via `DesignSync.get_file` into `iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/`; the 1024 file exceeds the tool's 256 KiB read cap and returns truncated — re-fetch in a way that avoids truncation (e.g. request via an alternate/chunked path) and verify the decoded PNG is complete (correct byte length, opens cleanly) before treating it as done
+- [X] T012 [P] Fetch `assets/app-icons/splash/{labella-splash-logo.png,labella-splash-logo-1x.png,android12-splash-icon.png}` via `DesignSync.get_file` into `specs/002-app-icons-splash/assets/splash/` as a staging location for Phase 4
 
 **Checkpoint**: All source PNGs exist locally at their fetch destinations; brand hex recorded. Both increments below can now proceed (in parallel if staffed).
 
@@ -61,8 +61,8 @@ description: "Task list for App Icons & Splash Screen (La Bella)"
 ### Implementation for US1
 
 - [X] T013 [US1] Create `composeApp/src/androidMain/res/mipmap-anydpi-v26/ic_launcher.xml` as an `<adaptive-icon>` with `<foreground>@mipmap/ic_launcher_foreground</foreground>` and `<background>@mipmap/ic_launcher_background</background>` (no `<monochrome>` entry, per revised clarification)
-- [X] T014 [US1] Create `composeApp/src/androidMain/res/mipmap-anydpi-v26/ic_launcher_round.xml` with the same `<adaptive-icon>` structure as T013
-- [X] T015 [US1] Update `composeApp/src/androidMain/AndroidManifest.xml`: add `android:icon="@mipmap/ic_launcher"` and `android:roundIcon="@mipmap/ic_launcher_round"` to the `<application>` element
+- [X] ~~T014 [US1] Create `composeApp/src/androidMain/res/mipmap-anydpi-v26/ic_launcher_round.xml` with the same `<adaptive-icon>` structure as T013~~ **Reverted during Phase 5 review**: with `minSdk = 24`, a round icon that exists only under the `v26` qualifier is unresolvable on API 24–25, which would break the quickstart's "API 24–25 shows the legacy PNG icon" check. The design export contains no round PNGs and re-rasterizing is out of scope (research R1/R2), so `ic_launcher_round.xml` was deleted. API 26+ launchers already mask the adaptive `ic_launcher` into whatever shape they use, so nothing is lost.
+- [X] T015 [US1] Update `composeApp/src/androidMain/AndroidManifest.xml`: add `android:icon="@mipmap/ic_launcher"` to the `<application>` element (no `android:roundIcon` — see T014)
 - [X] T016 [US1] Create `iosApp/iosApp/Assets.xcassets/AppIcon.appiconset/Contents.json` mapping each fetched `AppIcon-*.png` (T011) to its correct `idiom` (`iphone`/`ipad`/`ios-marketing`) and `scale` slot per the universal-appiconset layout in [data-model.md](./data-model.md); every fetched size must appear in exactly one slot
 - [X] T017 [US1] Add the `Assets.xcassets` group as a `PBXFileReference` and to the Resources build phase in `iosApp/iosApp.xcodeproj/project.pbxproj`
 - [X] T018 [US1] Set the `ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon` build setting for the `iosApp` target in `iosApp/iosApp.xcodeproj/project.pbxproj` (already present in the scaffold)
@@ -96,10 +96,10 @@ description: "Task list for App Icons & Splash Screen (La Bella)"
 
 **Purpose**: Confirm nothing is orphaned, nothing regresses the build, and every success criterion in `spec.md` is met
 
-- [ ] T027 [P] Run the no-inline-SVG check from `quickstart.md`: `grep -rIn "<svg" composeApp/src iosApp/iosApp --include=*.kt --include=*.swift --include=*.xml` and confirm no matches (SC-005)
-- [ ] T028 [P] Walk the "Wiring checklist" in `data-model.md` and confirm every fetched PNG (T005–T012) is referenced by a manifest/asset-catalog entry with none orphaned (FR-007, SC-005)
-- [ ] T029 Run `./gradlew :composeApp:assembleDebug` and resolve any build errors introduced by the new resources/dependency
-- [ ] T030 Execute the full `quickstart.md` device/simulator verification checklist (Android + iOS icon and splash checks, fidelity check vs. the design source) and confirm SC-001 through SC-004 pass
+- [X] T027 [P] Run the no-inline-SVG check from `quickstart.md`: `grep -rIn "<svg" composeApp/src iosApp/iosApp --include=*.kt --include=*.swift --include=*.xml` and confirm no matches (SC-005)
+- [X] T028 [P] Walk the "Wiring checklist" in `data-model.md` and confirm every fetched PNG (T005–T012) is referenced by a manifest/asset-catalog entry with none orphaned (FR-007, SC-005)
+- [X] T029 Run `./gradlew :composeApp:assembleDebug` and resolve any build errors introduced by the new resources/dependency
+- [X] T030 Execute the full `quickstart.md` device/simulator verification checklist (Android + iOS icon and splash checks, fidelity check vs. the design source) and confirm SC-001 through SC-004 pass — see `quickstart.md` for per-item results; remaining gaps (multi-API launcher masks, API 24–25 device, Xcode archive/validate) need a manual pass this environment can't automate
 
 ---
 

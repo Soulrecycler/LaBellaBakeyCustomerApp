@@ -52,12 +52,11 @@ specs/002-app-icons-splash/
 
 ```text
 composeApp/src/androidMain/
-├── AndroidManifest.xml                     # add android:icon + android:roundIcon; set splash theme
+├── AndroidManifest.xml                     # add android:icon (no roundIcon); set splash theme
 ├── kotlin/.../MainActivity.kt              # installSplashScreen() before super.onCreate
 └── res/
     ├── mipmap-anydpi-v26/
-    │   ├── ic_launcher.xml                  # <adaptive-icon> foreground+background (no monochrome)
-    │   └── ic_launcher_round.xml
+    │   └── ic_launcher.xml                  # <adaptive-icon> foreground+background (no monochrome)
     ├── mipmap-{mdpi,hdpi,xhdpi,xxhdpi,xxxhdpi}/
     │   ├── ic_launcher.png                  # legacy (API 24–25 fallback) — fetched from design-sync
     │   ├── ic_launcher_foreground.png       # adaptive foreground — fetched from design-sync
