@@ -50,6 +50,7 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.androidx.activity.compose)
             implementation(compose.uiTooling)
+            implementation(libs.androidx.core.splashscreen)
         }
     }
 }
